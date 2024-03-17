@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Core\Entities;
+namespace Modules\Core\Models;
 
 
-class Content extends \Modules\Core\Entities\Core
+class Content extends \Modules\Core\Models\Core
 {
     protected $table = "_contents";
 

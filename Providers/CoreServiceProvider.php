@@ -27,6 +27,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->registerCommands();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
 
@@ -51,7 +52,8 @@ class CoreServiceProvider extends ServiceProvider
             module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
+            module_path($this->moduleName, 'Config/config.php'),
+            $this->moduleNameLower
         );
     }
 
@@ -108,5 +110,14 @@ class CoreServiceProvider extends ServiceProvider
             }
         }
         return $paths;
+    }
+
+
+    public function registerCommands()
+    {
+    }
+
+    protected function loadCommandsFrom($path)
+    {
     }
 }
