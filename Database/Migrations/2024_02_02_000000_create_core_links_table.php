@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Support\Module;
 
-class CreateLinksTable extends Migration
+class CreateCoreLinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +14,7 @@ class CreateLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create(ModuleHelper::current_config('db_prefix') . '_links', function (Blueprint $table) {
+        Schema::create(Module::currentConfig('db_prefix') . '_links', function (Blueprint $table) {
             $table->id('lid');
             $table->string('slug')->nullable()->unique()->comment('标识');
             $table->string('title')->nullable()->comment('标题');
@@ -39,6 +40,6 @@ class CreateLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists(Module::currentConfig('db_prefix') . 'links');
     }
 }
